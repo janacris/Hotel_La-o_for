@@ -4,18 +4,19 @@ andar_usuario = int(input("Em que andar você está? "))
 # Mensagem informativa
 print(f"Você está no {andar_usuario}º andar. Desça mais um andar até chegar no 0º (térreo).")
 
-# Laço para descer andares, exceto o 13
-for i in range(andar_usuario, -1, -1):
-    if i == 13:
+# Laço do while simulado
+while True:
+    if andar_usuario == 13:
         print("Esse andar está indisponível, vá para o próximo.")
+        andar_usuario -= 1
         continue
     
-    print(f"Você está no {i}º andar.")
+    print(f"Você está no {andar_usuario}º andar.")
     
     # Solicita o próximo andar
     novo_andar = int(input("Para qual andar você quer ir agora? Digite o nº do seu próximo andar, por gentileza: "))
     
-    if novo_andar > i:
+    if novo_andar > andar_usuario:
         print("Você só pode descer para andares abaixo do atual.")
         continue
     elif novo_andar == 13:
@@ -29,5 +30,4 @@ for i in range(andar_usuario, -1, -1):
         print("Chegamos ao térreo, não há mais andares disponíveis, é hora de descer!")
         break
     
-    # Atualiza o andar atual
-    i = novo_andar
+    andar_usuario = novo_andar
